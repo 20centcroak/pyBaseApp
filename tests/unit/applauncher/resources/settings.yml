@@ -1,0 +1,3 @@
+mykey: myvalue
+value_to_substitute: '{otherkey}'
+otherkey: 3
