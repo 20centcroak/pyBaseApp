@@ -1,6 +1,6 @@
 import PyInstaller.__main__
 import os.path
-from pycroaktools.windows.options import Options
+from pyBaseApp.package import Options
 import distutils.file_util as fileutil
 import distutils.dir_util as dirutil
 from distutils.dist import DistutilsError
@@ -63,14 +63,15 @@ class Package:
         command.append(options.package)
 
         self._package(command)
-        self._copyFilesAndFolders(data, root_path, name)
+
+        if data:
+            self._copyFilesAndFolders(data, root_path, name)
 
         if options.bat:
             self._createbat(root_path, name)
 
         if options.sh:
             self._createsh(root_path, name, options.sh)
-
 
     def _package(self, command):
         PyInstaller.__main__.run(command)

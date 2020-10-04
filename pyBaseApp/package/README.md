@@ -42,11 +42,3 @@ Where *settings.yml* could be:
             s: mysettingspath
 
 See [pyinstaller documentation](https://pyinstaller.readthedocs.io/en/stable/) for more info
-
-def _createsh(self, path, name, parameters):
-        file = os.path.join(path, name+'.sh')
-        target = '{0}/{1}/{1} '.format(parameters['path'], name)
-        with open(file, 'w') as f:
-            f.write(target)            
-            for key, value in parameters['options'].items():
-                f.write('-{} {} '.format(key, value))
