@@ -43,9 +43,11 @@ Where *settings.yml* could be:
             s: mysettingspath
 
 
-Here is the list of available options:
+## List of available options:
+
 
 Pynstaller options and default values (See [pyinstaller documentation](https://pyinstaller.readthedocs.io/en/stable/) for more info):
+
     name = None
     onefile=False
     console=True
@@ -64,10 +66,13 @@ Pynstaller options and default values (See [pyinstaller documentation](https://p
     package = None
     no_confirm = True
 
+
 addons options :
+
     data = None
     version = None
     sh = None
     bat = None
+
 
 Examples of data and sh structures are given above
