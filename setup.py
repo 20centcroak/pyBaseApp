@@ -3,10 +3,16 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
+with open("pyBaseApp/applauncher/README.md","r") as fh:
+    long_description += fh.read()
+
+with open("pyBaseApp/package/README.md","r") as fh:
+    long_description += fh.read()
+
 setuptools.setup(
     name="pyBaseApp", 
-    version="0.3",
-    author="20centCroal",
+    version="0.4",
+    author="20centCroak",
     author_email="",
     description="Standard app configuration and packaging",
     long_description=long_description,
