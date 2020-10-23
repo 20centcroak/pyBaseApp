@@ -11,7 +11,7 @@ with open("pyBaseApp/package/README.md","r") as fh:
 
 setuptools.setup(
     name="pyBaseApp", 
-    version="0.5",
+    version="0.6",
     author="20centCroak",
     author_email="",
     description="Standard app configuration and packaging",
@@ -25,4 +25,8 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.6',
+    install_requires=[
+          'PyYAML',
+          'pyinstaller'
+      ],
 )

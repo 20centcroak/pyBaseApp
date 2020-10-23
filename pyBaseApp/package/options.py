@@ -1,5 +1,5 @@
 from enum import Enum
-from pycroaktools.applauncher import Settings
+from pyBaseApp.applauncher import Settings
 
 class Options(Settings):
     """https://pyinstaller.readthedocs.io/en/stable/usage.html"""
