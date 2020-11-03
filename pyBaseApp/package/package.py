@@ -1,5 +1,5 @@
 import PyInstaller.__main__
-import os.path
+import os
 from pyBaseApp.package import Options
 import distutils.file_util as fileutil
 import distutils.dir_util as dirutil
@@ -68,7 +68,7 @@ class Package:
             self._copyFilesAndFolders(data, root_path, name)
 
         if options.bat:
-            self._createbat(root_path, name)
+            self._createbat(root_path, name, options.bat)
 
         if options.sh:
             self._createsh(root_path, name, options.sh)
@@ -76,10 +76,14 @@ class Package:
     def _package(self, command):
         PyInstaller.__main__.run(command)
 
-    def _createbat(self, path, name):
+    def _createbat(self, path, name, parameters):
         file = os.path.join(path, name+'.bat')
+        path = parameters['path'] if 'path' in parameters else name
         with open(file, 'w') as f:
-            f.write('START '+os.path.join(name, name+'.exe'))
+            f.write(os.path.join(path, name+'.exe '))
+            for key, value in parameters['options'].items():
+                f.write('-{} {} '.format(key, value))
+            f.write('\nPAUSE')
 
     def _createsh(self, path, name, parameters):
         file = os.path.join(path, name+'.sh')
@@ -111,6 +115,7 @@ class Package:
             return
         try:
             target_file = os.path.join(dest, dataobj['rename']) if 'rename' in dataobj else os.path.join(dest, os.path.basename(src))
+            os.makedirs(os.path.dirname(target_file), exist_ok=True)
             fileutil.copy_file(src, target_file)
             return target_file
         except DistutilsError:

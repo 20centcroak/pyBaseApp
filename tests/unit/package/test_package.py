@@ -18,4 +18,14 @@ class TestPackage(unittest.TestCase):
             logging.error('package value is missing in settings')
 
         self.assertTrue(os.path.exists(settings['distpath']))
-        shutil.rmtree(settings['distpath'], ignore_errors=True)
+
+    def test_package2(self):
+        settings = Configuration().settings('tests/unit/package/resources/settings2.yml')
+        data = settings['data'] if 'data' in settings else None
+        try:
+            options = Options(settings)
+            Package(options, data)
+        except ValueError:
+            logging.error('package value is missing in settings')
+
+        self.assertTrue(os.path.exists(settings['distpath']))
