@@ -11,7 +11,7 @@ with open("pyBaseApp/package/README.md","r") as fh:
 
 setuptools.setup(
     name="pyBaseApp", 
-    version="0.6",
+    version="0.7",
     author="20centCroak",
     author_email="",
     description="Standard app configuration and packaging",
