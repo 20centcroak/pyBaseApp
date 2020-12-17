@@ -4,7 +4,7 @@ import re
 import os
 from os import walk
 
-from pyBaseApp.applauncher import Configuration
+from pyBaseApp import Configuration
 
 class TestConfiguration(unittest.TestCase):
 
@@ -32,21 +32,21 @@ class TestConfiguration(unittest.TestCase):
             self.assertTrue(result, 'log line does not comply with expected regex')
 
     def test_settings(self):
-        settings_file = 'tests/unit/applauncher/resources/settings.yml'
+        settings_file = 'tests/unit/resources/settings.yml'
         settings = self.conf.settings(settings_file)
         self.assertTrue(settings, 'no setting loaded from file {}'.format(os.path.abspath(settings_file)))
         self.assertTrue('mykey' in settings, 'no key "mykey" in settings')
         self.assertEqual(settings['mykey'], 'myvalue', 'expected "my value" but received {}'.format(settings['mykey']))
 
     def test_settings_no_extension(self):
-        settings_file = 'tests/unit/applauncher/resources/settings'
+        settings_file = 'tests/unit/resources/settings'
         settings = self.conf.settings(settings_file)
         self.assertTrue(settings, 'no setting loaded from file {}'.format(os.path.abspath(settings_file)))
         self.assertTrue('mykey' in settings, 'no key "mykey" in settings')
         self.assertEqual(settings['mykey'], 'myvalue', 'expected "my value" but received {}'.format(settings['mykey']))
 
     def test_substitution(self):
-        settings_file = 'tests/unit/applauncher/resources/settings'
+        settings_file = 'tests/unit/resources/settings'
         settings = self.conf.settings(settings_file)
         self.assertTrue(settings, 'no setting loaded from file {}'.format(os.path.abspath(settings_file)))
         self.assertTrue('value_to_substitute' in settings, 'no key "value_to_substitute" in settings')
