@@ -3,12 +3,6 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-with open("pyBaseApp/applauncher/README.md","r") as fh:
-    long_description += fh.read()
-
-with open("pyBaseApp/package/README.md","r") as fh:
-    long_description += fh.read()
-
 setuptools.setup(
     name="pyBaseApp", 
     version="1.0",
@@ -26,7 +20,6 @@ setuptools.setup(
     ],
     python_requires='>=3.6',
     install_requires=[
-          'PyYAML',
-          'pyinstaller'
+          'PyYAML'
       ],
 )
